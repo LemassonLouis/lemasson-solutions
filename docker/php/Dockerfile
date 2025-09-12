@@ -7,6 +7,9 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install intl pdo_mysql gd zip opcache \
     && docker-php-ext-enable opcache
 
+RUN mkdir -p /var/www/html/var/cache /var/www/html/var/log \
+    && chown -R www-data:www-data /var/www/html/var
+
 # Installer Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
