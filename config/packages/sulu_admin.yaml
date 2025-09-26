@@ -8,8 +8,6 @@ sulu_admin:
             - "%kernel.project_dir%/config/lists"
 sulu_core:
     locales:
-        en: English
         fr: French
     translations:
-        - en
         - fr

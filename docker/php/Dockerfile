@@ -5,7 +5,8 @@ RUN apt-get update && apt-get install -y \
     git unzip libicu-dev libzip-dev libpng-dev libjpeg-dev libfreetype6-dev libonig-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install intl pdo_mysql gd zip opcache \
-    && docker-php-ext-enable opcache
+    && docker-php-ext-enable opcache \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /var/www/html/var/cache /var/www/html/var/log \
     && chown -R www-data:www-data /var/www/html/var
