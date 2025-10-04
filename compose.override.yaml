@@ -22,12 +22,16 @@ services:
       context: .
       dockerfile: docker/php/Dockerfile
     volumes:
-      - .:/var/www/html
+      - .:/var/www/html:cached
+      - vendor_data:/var/www/html/vendor
       - cache_data:/var/www/html/var/cache
       - log_data:/var/www/html/var/log
+      - sessions_data:/var/www/html/var/sessions
     working_dir: /var/www/html
     depends_on:
       - database
+    environment:
+      - PHP_MAX_EXECUTION_TIME=60
   ###< php ###
 
   ###> nginx ###
@@ -43,5 +47,7 @@ services:
   ###< nginx ###
 
 volumes:
+  vendor_data:
   cache_data:
   log_data:
+  sessions_data:
