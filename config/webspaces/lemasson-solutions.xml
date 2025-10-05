@@ -4,13 +4,12 @@
           xsi:schemaLocation="http://schemas.sulu.io/webspace/webspace http://schemas.sulu.io/webspace/webspace-1.1.xsd">
     <!-- See: http://docs.sulu.io/en/latest/book/webspaces.html how to configure your webspace-->
 
-    <name>Website</name>
-    <key>website</key>
+    <name>Lemassons Solutions</name>
+    <key>lemasson-solutions</key>
 
     <localizations>
         <!-- See: http://docs.sulu.io/en/latest/book/localization.html how to add new localizations -->
         <localization language="fr" default="true"/>
-        <localization language="en"/>
     </localizations>
 
     <default-templates>
@@ -34,8 +33,7 @@
         <contexts>
             <context key="main">
                 <meta>
-                    <title lang="en">Main Navigation</title>
-                    <title lang="de">Hauptnavigation</title>
+                    <title lang="fr">Menu</title>
                 </meta>
             </context>
         </contexts>
@@ -43,28 +41,28 @@
 
     <portals>
         <portal>
-            <name>Website</name>
-            <key>website</key>
+            <name>Lemassons Solutions</name>
+            <key>lemasson-solutions</key>
 
             <environments>
                 <environment type="prod">
                     <urls>
-                        <url language="en">{host}</url>
+                        <url language="fr">{host}</url>
                     </urls>
                 </environment>
                 <environment type="stage">
                     <urls>
-                        <url language="en">{host}</url>
+                        <url language="fr">{host}</url>
                     </urls>
                 </environment>
                 <environment type="test">
                     <urls>
-                        <url language="en">{host}</url>
+                        <url language="fr">{host}</url>
                     </urls>
                 </environment>
                 <environment type="dev">
                     <urls>
-                        <url language="en">{host}</url>
+                        <url language="fr">{host}</url>
                     </urls>
                 </environment>
             </environments>
