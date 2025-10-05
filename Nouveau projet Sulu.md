@@ -59,12 +59,16 @@ services:
       context: .
       dockerfile: docker/php/Dockerfile
     volumes:
-      - .:/var/www/html
+      - .:/var/www/html:cached
+      - vendor_data:/var/www/html/vendor
       - cache_data:/var/www/html/var/cache
       - log_data:/var/www/html/var/log
+      - sessions_data:/var/www/html/var/sessions
     working_dir: /var/www/html
     depends_on:
       - database
+    environment:
+      - PHP_MAX_EXECUTION_TIME=60
   ###< php ###
 
   ###> nginx ###
@@ -80,8 +84,10 @@ services:
   ###< nginx ###
 
 volumes:
+  vendor_data:
   cache_data:
   log_data:
+  sessions_data:
 ```
 
 Dans `docker/nginx/default.conf` _(le créer au besoin)_
@@ -142,7 +148,7 @@ WORKDIR /var/www/html
 
 Dans `docker/php/conf.d/memory.ini` _(le créer au besoin)_
 ```ini
-memory_limit = 1G
+memory_limit = 512M
 ```
 
 
@@ -211,11 +217,9 @@ docker compose exec php bin/console sulu:admin:download-language
 
 # Base de données
 docker compose exec php bin/console doctrine:database:create --if-not-exists
-docker compose exec php bin/console doctrine:migrations:migrate -n
-docker compose exec php bin/console sulu:build dev
 
-# Utilisateur admin
-docker compose exec php bin/console sulu:user:create
+# Initialiser l'environnement de développement
+docker compose exec php bin/console sulu:build dev
 
 # Vider le cache
 docker compose exec php bin/console cache:clear
@@ -229,9 +233,3 @@ docker compose exec php bin/console cache:clear
 * Administration Sulu : http://localhost:8080/admin
 * Mailpit (test emails) : http://localhost:8025
 * Base de données : localhost:3306 (accessible avec un client MySQL)
-
-
-
-## 8. Configurer le webspace
-
-TODO
