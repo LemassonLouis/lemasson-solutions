@@ -4,7 +4,7 @@
           xsi:schemaLocation="http://schemas.sulu.io/webspace/webspace http://schemas.sulu.io/webspace/webspace-1.1.xsd">
     <!-- See: http://docs.sulu.io/en/latest/book/webspaces.html how to configure your webspace-->
 
-    <name>Lemassons Solutions</name>
+    <name>Lemasson Solutions</name>
     <key>lemasson-solutions</key>
 
     <localizations>
@@ -41,7 +41,7 @@
 
     <portals>
         <portal>
-            <name>Lemassons Solutions</name>
+            <name>Lemasson Solutions</name>
             <key>lemasson-solutions</key>
 
             <environments>
