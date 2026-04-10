@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>{{ content.title }}</h1>
+
+    {{ content.context|raw }}
+
+    {{ content.problem|raw }}
+
+    {{ content.solution|raw }}
+
+{% endblock %}
