@@ -1,51 +1,61 @@
 <!DOCTYPE html>
 <html lang="{{ app.request.locale|split('_')[0] }}">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    {% block meta %}
-        {{ include('@SuluWebsite/Extension/seo.html.twig', {
-            seo: extension.seo|default([]),
-            content: content|default([]),
-            localizations: localizations|default([]),
-            shadowBaseLocale: shadowBaseLocale|default(),
-        }) }}
-    {% endblock %}
+        {% block meta %}
+            {{ include('@SuluWebsite/Extension/seo.html.twig', {
+                seo: extension.seo|default([]),
+                content: content|default([]),
+                localizations: localizations|default([]),
+                shadowBaseLocale: shadowBaseLocale|default(),
+            }) }}
+        {% endblock %}
 
-    {% block style %}{% endblock %}
-</head>
-<body>
-    <header>
-        {% block header %}
-            <nav>
-                <ul>
-                    <li>
-                        <a href="{{ sulu_content_root_path() }}">Homepage</a>
-                    </li>
+        {% block style %}{% endblock %}
+    </head>
 
-                    {% for item in sulu_navigation_root_tree('main') %}
+    <body>
+        <header>
+            {% block header %}
+                {% macro render_menu_items(items) %}
+                    {% for item in items %}
                         <li>
-                            <a href="{{ sulu_content_path(item.url, item.webspaceKey) }}"
-                               title="{{ item.title }}">{{ item.title }}</a>
+                            <a href="{{ sulu_content_path(item.url, item.webspaceKey) }}" title="{{ item.title }}">{{ item.title }}</a>
+                            
+                            {% if item.children is defined and item.children|length > 0 %}
+                                <ul>
+                                    {{ _self.render_menu_items(item.children) }}
+                                </ul>
+                            {% endif %}
                         </li>
                     {% endfor %}
-                </ul>
-            </nav>
-        {% endblock %}
-    </header>
+                {% endmacro %}
 
-    <main>
-        {% block content %}{% endblock %}
-    </main>
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="{{ sulu_content_root_path() }}">Accueil</a>
+                        </li>
+                        
+                        {{ _self.render_menu_items(sulu_navigation_root_tree('main', null, false, -1)) }}
+                    </ul>
+                </nav>
+            {% endblock %}
+        </header>
 
-    <footer>
-        {% block footer %}
-            <p>Copyright {{ 'now'|date('Y') }} SULU</p>
-        {% endblock %}
-    </footer>
+        <main>
+            {% block content %}{% endblock %}
+        </main>
 
-    {% block javascripts %}{% endblock %}
-</body>
+        <footer>
+            {% block footer %}
+                <p>Copyright {{ 'now'|date('Y') }} SULU</p>
+            {% endblock %}
+        </footer>
+
+        {% block javascripts %}{% endblock %}
+    </body>
 </html>
