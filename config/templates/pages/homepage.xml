@@ -1,6 +1,7 @@
 <?xml version="1.0" ?>
 <template xmlns="http://schemas.sulu.io/template/template"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
           xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
 
     <key>homepage</key>
@@ -14,29 +15,21 @@
     </meta>
 
     <properties>
-        <property name="title" type="text_line" mandatory="true">
-            <meta>
-                <title lang="fr">Titre</title>
-            </meta>
-            <params>
-                <param name="headline" value="true"/>
-            </params>
+        <xi:include href="fragments/page-settings.xml"/>
+        <xi:include href="fragments/hero.xml"/>
 
-            <tag name="sulu.rlp.part"/>
-        </property>
-
-        <property name="url" type="resource_locator" mandatory="true">
+        <section name="content">
             <meta>
-                <title lang="fr">URL</title>
+                <title lang="fr">Contenu de la page</title>
             </meta>
 
-            <tag name="sulu.rlp"/>
-        </property>
-
-        <property name="content" type="text_editor">
-            <meta>
-                <title lang="fr">Contenu</title>
-            </meta>
-        </property>
+            <properties>
+                <property name="content" type="text_editor">
+                    <meta>
+                        <title lang="fr">Contenu</title>
+                    </meta>
+                </property>
+            </properties>
+        </section>
     </properties>
 </template>
