@@ -3,5 +3,9 @@
 {% block content %}
     <h1>{{ content.title }}</h1>
 
+    {% for item in sulu_breadcrumb(uuid) %}
+        <a href="{{ sulu_content_path(item.url) }}">{{ item.title }}</a>
+    {% endfor %}
+
     {{ content.content|raw }}
 {% endblock %}
