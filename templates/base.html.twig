@@ -14,19 +14,21 @@
             }) }}
         {% endblock %}
 
-        {% block style %}{% endblock %}
+        {% block style %}
+            <link rel="stylesheet" href="/css/navbar.css">
+        {% endblock %}
     </head>
 
     <body>
-        <header>
+        <header class="header-navbar">
             {% block header %}
                 {% macro render_menu_items(items) %}
                     {% for item in items %}
-                        <li>
+                        <li {% if item.children is defined and item.children|length > 0 %}class="has-submenu"{% endif %}>
                             <a href="{{ sulu_content_path(item.url, item.webspaceKey) }}" title="{{ item.title }}">{{ item.title }}</a>
                             
                             {% if item.children is defined and item.children|length > 0 %}
-                                <ul>
+                                <ul class="submenu">
                                     {{ _self.render_menu_items(item.children) }}
                                 </ul>
                             {% endif %}
@@ -34,15 +36,25 @@
                     {% endfor %}
                 {% endmacro %}
 
-                <nav>
-                    <ul>
-                        <li>
-                            <a href="{{ sulu_content_root_path() }}">Accueil</a>
-                        </li>
-                        
-                        {{ _self.render_menu_items(sulu_navigation_root_tree('main', null, false, -1)) }}
-                    </ul>
-                </nav>
+                <div class="navbar-container">
+                    <div class="navbar-logo">
+                        <img src="/img/logos/logo-etendu-noir-fond-blanc-wide.png" alt="Logo" class="logo">
+                    </div>
+
+                    <nav class="navbar-nav">
+                        <ul>
+                            <li>
+                                <a href="{{ sulu_content_root_path() }}">Accueil</a>
+                            </li>
+                            
+                            {{ _self.render_menu_items(sulu_navigation_root_tree('main', null, false, -1)) }}
+                        </ul>
+                    </nav>
+
+                    <div class="navbar-action">
+                        <button class="btn-action">Bouton</button>
+                    </div>
+                </div>
             {% endblock %}
         </header>
 
