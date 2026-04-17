@@ -1,0 +1,34 @@
+{% set image = content.heroImage %}
+
+{% if image is not empty %}
+
+    {% block style %}
+        <link rel="stylesheet" href="/css/hero.css">
+    {% endblock %}
+
+    <div class="hero-container">
+        <div class="hero-image">
+            <img class="hero-img" src="{{ image.url }}" alt="{{ image.description|default(image.title) }}">
+        </div>
+
+        <div class="hero-content">
+            {% if content.heroTitle is not empty %}
+                <h2>{{ content.heroTitle }}</h2>
+            {% endif %}
+            {% if content.heroText is not empty %}
+                <p>{{ content.heroText }}</p>
+            {% endif %}
+
+            {% if content.hasPrimaryCTA or content.hasSecondaryCTA %}
+                <div class="hero-buttons">
+                    {% if content.hasPrimaryCTA %}
+                        <a class="btn-primary" href="{{ content.primaryCTA }}" target="{{ view.primaryCTA.target }}">{{ view.primaryCTA.title }}</a>
+                    {% endif %}
+                    {% if content.hasSecondaryCTA %}
+                        <a class="btn-secondary" href="{{ content.secondaryCTA }}" target="{{ view.secondaryCTA.target }}">{{ view.secondaryCTA.title }}</a>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endif %}

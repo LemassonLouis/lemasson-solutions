@@ -13,12 +13,70 @@
             <meta>
                 <title lang="fr">Image</title>
             </meta>
+
+            <params>
+                <param name="types" value="image"/>
+            </params>
+        </property>
+
+        <property name="heroTitle" type="text_line">
+            <meta>
+                <title lang="fr">Titre</title>
+            </meta>
         </property>
 
         <property name="heroText" type="text_area">
             <meta>
                 <title lang="fr">Texte</title>
             </meta>
+        </property>
+
+        <property name="hasPrimaryCTA" type="checkbox" colspan="4">
+            <params>
+                <param name="type" value="toggler"/>
+                <param name="label">
+                    <meta>
+                        <title lang="fr">Afficher le CTA principal</title>
+                    </meta>
+                </param>
+            </params>
+        </property>
+
+        <property name="primaryCTA" type="link" visibleCondition="hasPrimaryCTA == true" colspan="8">
+            <meta>
+                <title lang="fr">URL et libellé du CTA principal</title>
+            </meta>
+
+            <params>
+                <param name="enable_attributes" value="true"/>
+                <param name="types" type="collection">
+                    <param name="page"/>
+                </param>
+            </params>
+        </property>
+
+        <property name="hasSecondaryCTA" type="checkbox" visibleCondition="hasPrimaryCTA == true" colspan="4">
+            <params>
+                <param name="type" value="toggler"/>
+                <param name="label">
+                    <meta>
+                        <title lang="fr">Afficher le CTA secondaire</title>
+                    </meta>
+                </param>
+            </params>
+        </property>
+
+        <property name="secondaryCTA" type="link" visibleCondition="hasSecondaryCTA == true" colspan="8">
+            <meta>
+                <title lang="fr">URL et libellé du CTA secondaire</title>
+            </meta>
+
+            <params>
+                <param name="enable_attributes" value="true"/>
+                <param name="types" type="collection">
+                    <param name="page"/>
+                </param>
+            </params>
         </property>
     </properties>
 </section>

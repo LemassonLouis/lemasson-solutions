@@ -3,5 +3,7 @@
 {% block content %}
     <h1>{{ content.title }}</h1>
 
+    {% include 'pages/fragments/_hero.html.twig' %}
+
     {{ content.content|raw }}
 {% endblock %}
