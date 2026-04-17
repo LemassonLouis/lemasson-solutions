@@ -5,9 +5,7 @@
         <h1>{{ content.title }}</h1>
     {% endif %}
 
-    {% for item in sulu_breadcrumb(uuid) %}
-        <a href="{{ sulu_content_path(item.url) }}">{{ item.title }}</a>
-    {% endfor %}
+    {% include 'pages/partials/_breadcrumbs.html.twig' %}
 
     {{ content.context|raw }}
 
