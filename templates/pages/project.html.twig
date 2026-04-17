@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-    <h1>{{ content.title }}</h1>
+    {% if content.heroImage|default('') is empty %}
+        <h1>{{ content.title }}</h1>
+    {% endif %}
 
     {% for item in sulu_breadcrumb(uuid) %}
         <a href="{{ sulu_content_path(item.url) }}">{{ item.title }}</a>

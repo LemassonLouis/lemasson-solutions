@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-    <h1>{{ content.title }}</h1>
+    {% if content.heroImage|default('') is empty %}
+        <h1>{{ content.title }}</h1>
+    {% endif %}
 
     {% include 'pages/fragments/_hero.html.twig' %}
 
