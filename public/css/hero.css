@@ -1,7 +1,7 @@
 .hero-container {
     position: relative;
-    width: 100%;
-    margin: 0;
+    width: calc(100% + 4rem);
+    margin: -2rem 0 0 -2rem;
     padding: 0;
     height: 600px;
     overflow: hidden;
@@ -38,6 +38,13 @@
 .hero-content h2 {
     margin: 0 0 1rem 0;
     font-size: 2.5rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content h1 {
+    margin: 0 0 1rem 0;
+    font-size: 3.5rem;
     font-weight: bold;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
