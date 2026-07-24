@@ -28,7 +28,7 @@
                         <a class="btn-primary" href="{{ content.primaryCTA }}" target="{{ view.primaryCTA.target }}">{{ view.primaryCTA.title }}</a>
                     {% endif %}
 
-                    {% if content.hasSecondaryCTA %}
+                    {% if content.hasSecondaryCTA and content.hasPrimaryCTA %}
                         <a class="btn-secondary" href="{{ content.secondaryCTA }}" target="{{ view.secondaryCTA.target }}">{{ view.secondaryCTA.title }}</a>
                     {% endif %}
                 </div>
