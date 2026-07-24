@@ -1,0 +1,41 @@
+{% set section_items = sections|default(content.sections|default([])) %}
+{% set section_views = sectionsView|default(view.sections|default([])) %}
+
+{% if section_items is not empty %}
+    {% for section in section_items %}
+        {% set section_view = section_views[loop.index0]|default([]) %}
+
+        <section class="content-section">
+            {% if section.title|default('') is not empty %}
+                <h2>{{ section.title }}</h2>
+            {% endif %}
+
+            {% if section.content|default('') is not empty %}
+                <div>{{ section.content|raw }}</div>
+            {% endif %}
+
+            {% if section.sub_sections|default([]) is not empty %}
+                <div class="content-subsections">
+                    {% for sub_section in section.sub_sections %}
+                        <div class="content-subsection">
+                            {% if sub_section.title|default('') is not empty %}
+                                <h3>{{ sub_section.title }}</h3>
+                            {% endif %}
+                            {% if sub_section.content|default('') is not empty %}
+                                <div>{{ sub_section.content|raw }}</div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            {% if section.has_cta|default(false) and section.cta|default('') is not empty %}
+                {% set ctaMeta = section_view.cta|default([]) %}
+
+                <a class="btn-primary" href="{{ section.cta }}" target="{{ ctaMeta.target|default('_self') }}" rel="{{ ctaMeta.rel|default('') }}">
+                    {{ ctaMeta.title|default('En savoir plus') }}
+                </a>
+            {% endif %}
+        </section>
+    {% endfor %}
+{% endif %}

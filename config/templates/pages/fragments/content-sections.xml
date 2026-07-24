@@ -1,0 +1,83 @@
+<?xml version="1.0" ?>
+<property name="sections" type="block"
+          xmlns="http://schemas.sulu.io/template/template"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+    <meta>
+        <title lang="fr">Sections</title>
+    </meta>
+
+    <types>
+        <type name="section">
+            <meta>
+                <title lang="fr">Section</title>
+            </meta>
+
+            <properties>
+                <property name="title" type="text_line">
+                    <meta>
+                        <title lang="fr">Titre</title>
+                    </meta>
+                </property>
+
+                <property name="content" type="text_editor">
+                    <meta>
+                        <title lang="fr">Contenu</title>
+                    </meta>
+                </property>
+
+                <property name="sub_sections" type="block">
+                    <meta>
+                        <title lang="fr">Sous-sections</title>
+                    </meta>
+
+                    <types>
+                        <type name="sub_section">
+                            <meta>
+                                <title lang="fr">Sous-section</title>
+                            </meta>
+
+                            <properties>
+                                <property name="title" type="text_line">
+                                    <meta>
+                                        <title lang="fr">Titre</title>
+                                    </meta>
+                                </property>
+
+                                <property name="content" type="text_editor">
+                                    <meta>
+                                        <title lang="fr">Contenu</title>
+                                    </meta>
+                                </property>
+                            </properties>
+                        </type>
+                    </types>
+                </property>
+
+                <property name="has_cta" type="checkbox" colspan="4">
+                    <params>
+                        <param name="type" value="toggler"/>
+                        <param name="label">
+                            <meta>
+                                <title lang="fr">Afficher un CTA</title>
+                            </meta>
+                        </param>
+                    </params>
+                </property>
+
+                <property name="cta" type="link" visibleCondition="__parent.has_cta" colspan="8">
+                    <meta>
+                        <title lang="fr">URL et libellé du CTA</title>
+                    </meta>
+
+                    <params>
+                        <param name="enable_attributes" value="true"/>
+                        <param name="types" type="collection">
+                            <param name="page"/>
+                        </param>
+                    </params>
+                </property>
+            </properties>
+        </type>
+    </types>
+</property>
