@@ -1,0 +1,13 @@
+{% macro render_menu_items(items) %}
+    {% for item in items %}
+        <li {% if item.children is defined and item.children|length > 0 %}class="has-submenu"{% endif %}>
+            <a href="{{ sulu_content_path(item.url, item.webspaceKey) }}" title="{{ item.title }}">{{ item.title }}</a>
+
+            {% if item.children is defined and item.children|length > 0 %}
+                <ul class="submenu">
+                    {{ _self.render_menu_items(item.children) }}
+                </ul>
+            {% endif %}
+        </li>
+    {% endfor %}
+{% endmacro %}

@@ -1,3 +1,5 @@
+{% set main_navigation = sulu_navigation_root_tree('main', null, false, -1) %}
+
 <!DOCTYPE html>
 <html lang="{{ app.request.locale|split('_')[0] }}">
     <head>
@@ -18,25 +20,14 @@
             <link rel="stylesheet" href="/css/global.css">
             <link rel="stylesheet" href="/css/navbar.css">
             <link rel="stylesheet" href="/css/button.css">
+            <link rel="stylesheet" href="/css/footer.css">
         {% endblock %}
     </head>
 
     <body>
         <header class="header-navbar">
             {% block header %}
-                {% macro render_menu_items(items) %}
-                    {% for item in items %}
-                        <li {% if item.children is defined and item.children|length > 0 %}class="has-submenu"{% endif %}>
-                            <a href="{{ sulu_content_path(item.url, item.webspaceKey) }}" title="{{ item.title }}">{{ item.title }}</a>
-                            
-                            {% if item.children is defined and item.children|length > 0 %}
-                                <ul class="submenu">
-                                    {{ _self.render_menu_items(item.children) }}
-                                </ul>
-                            {% endif %}
-                        </li>
-                    {% endfor %}
-                {% endmacro %}
+                {% import 'macros/navigation.html.twig' as navigation %}
 
                 <div class="navbar-container">
                     <div class="navbar-logo">
@@ -46,15 +37,15 @@
                     <nav class="navbar-nav">
                         <ul>
                             <li>
-                                <a href="{{ sulu_content_root_path() }}">Accueil</a>
+                                <a href="{{ sulu_content_root_path() }}" title="Accueil">Accueil</a>
                             </li>
                             
-                            {{ _self.render_menu_items(sulu_navigation_root_tree('main', null, false, -1)) }}
+                            {{ navigation.render_menu_items(main_navigation) }}
                         </ul>
                     </nav>
 
                     <div class="navbar-action">
-                        <a class="btn-primary" href="#">Demander un devis</a>
+                        <a class="btn-primary" href="#" title="Demander un devis">Demander un devis</a>
                     </div>
                 </div>
             {% endblock %}
@@ -66,7 +57,50 @@
 
         <footer>
             {% block footer %}
-                <p>Copyright {{ 'now'|date('Y') }} SULU</p>
+                <div class="footer-grid">
+                    <div class="footer-column">
+                        <h3>Navigation</h3>
+                        <ul class="footer-links">
+                            <li><a href="{{ sulu_content_root_path() }}" title="Accueil">Accueil</a></li>
+                            {% for item in main_navigation %}
+                                {% if item.title != 'Accueil' %}
+                                    <li>
+                                        <a href="{{ sulu_content_path(item.url, item.webspaceKey) }}" title="{{ item.title }}">{{ item.title }}</a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h3>Services</h3>
+                        <ul class="footer-links">
+                            {% for service in sulu_services() %}
+                                <li><a href="{{ service.resourceSegment }}" title="{{ service.title }}">{{ service.title }}</a></li>
+                            {% else %}
+                                <li><a href="/services">Voir tous mes services</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h3>Contact</h3>
+                        <ul class="footer-links footer-contact">
+                            <li><a href="mailto:louis.lemasson@lemasson-solutions.fr">louis.lemasson@lemasson-solutions.fr</a></li>
+                            <li><a href="tel:+33626420447">06.26.42.04.47</a></li>
+                            <li>20 rue Docteur Roux<br>14000 Caen</li>
+                            <li><a href="https://www.linkedin.com/company/106228038/admin/dashboard/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                            <li><a href="https://www.instagram.com/lemassonsolutions/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                            <li><a href="https://www.linkedin.com/company/106228038/admin/dashboard/" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+                            <li><a href="https://github.com/LemassonLouis" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <a href="/mentions-legales" title="Mentions légales">Mentions légales</a>
+                    <p>© 2026 Lemasson Solutions, EI LEMASSON Louis — Tous droits réservés.</p>
+                </div>
             {% endblock %}
         </footer>
 

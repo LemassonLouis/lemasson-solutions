@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    {% if content.heroImage|default('') is empty %}
+        <h1>{{ content.title }}</h1>
+    {% endif %}
+
+    {% include 'pages/fragments/_hero.html.twig' %}
+
+    {% include 'pages/partials/_breadcrumbs.html.twig' %}
+
+    {{ content.content|raw }}
+{% endblock %}

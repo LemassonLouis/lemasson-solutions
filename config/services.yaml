@@ -23,3 +23,7 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    App\Twig\ServicesExtension:
+        arguments:
+            $documentManager: '@sulu_document_manager.document_manager'
+            $requestAnalyzer: '@sulu_core.webspace.request_analyzer'
