@@ -31,9 +31,14 @@
 
     <navigation>
         <contexts>
-            <context key="main">
+            <context key="menu-main">
                 <meta>
                     <title lang="fr">Menu</title>
+                </meta>
+            </context>
+            <context key="footer-links">
+                <meta>
+                    <title lang="fr">Liens de pied de page</title>
                 </meta>
             </context>
         </contexts>

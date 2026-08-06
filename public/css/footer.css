@@ -93,12 +93,19 @@ footer {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 1rem;
+    gap: 0.5rem;
+    align-items: center;
 }
 
 .footer-bottom a {
     color: #ffffff;
     text-decoration: none;
+}
+
+.footer-bottom__links{
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
 }
 
 .footer-bottom p {
