@@ -31,7 +31,7 @@ footer {
 .footer-links a {
     color: #cbd5e1;
     text-decoration: none;
-    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+    transition: color 0.2s ease, transform 0.2s ease, text-decoration-color 0.2s ease;
 }
 
 .footer-links a:hover,
@@ -46,6 +46,43 @@ footer {
 .footer-contact li {
     color: #cbd5e1;
     line-height: 1.5;
+}
+
+.footer-social-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0.25rem;
+    padding: 0;
+}
+
+.footer-social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 999px;
+    background-color: rgba(248, 250, 252, 0.12);
+    color: #f8fafc;
+    transition: background-color 0.2s ease, transform 0.2s ease, color 0.2s ease;
+}
+
+.footer-social-links a:hover,
+.footer-social-links a:focus-visible {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    transform: translateY(-1px);
+    text-decoration: none;
+}
+
+.footer-social-links img {
+    width: 1.05rem;
+    height: 1.05rem;
+    display: block;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
 }
 
 .footer-bottom {

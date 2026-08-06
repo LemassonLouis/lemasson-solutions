@@ -1,4 +1,5 @@
 {% set main_navigation = sulu_navigation_root_tree('main', null, false, -1) %}
+{% set contact_snippet = sulu_snippet_load_by_area('footer_contact')|default([]) %}
 
 <!DOCTYPE html>
 <html lang="{{ app.request.locale|split('_')[0] }}">
@@ -86,13 +87,59 @@
                     <div class="footer-column">
                         <h3>Contact</h3>
                         <ul class="footer-links footer-contact">
-                            <li><a href="mailto:louis.lemasson@lemasson-solutions.fr">louis.lemasson@lemasson-solutions.fr</a></li>
-                            <li><a href="tel:+33626420447">06.26.42.04.47</a></li>
-                            <li>20 rue Docteur Roux<br>14000 Caen</li>
-                            <li><a href="https://www.linkedin.com/company/106228038/admin/dashboard/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-                            <li><a href="https://www.instagram.com/lemassonsolutions/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-                            <li><a href="https://www.linkedin.com/company/106228038/admin/dashboard/" target="_blank" rel="noopener noreferrer">Facebook</a></li>
-                            <li><a href="https://github.com/LemassonLouis" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                            {% if contact_snippet.content.show_email|default(true) and contact_snippet.content.email|default('') %}
+                                <li><a href="mailto:{{ contact_snippet.content.email }}">{{ contact_snippet.content.email }}</a></li>
+                            {% endif %}
+
+                            {% if contact_snippet.content.show_phone|default(true) and contact_snippet.content.phone|default('') %}
+                                <li><a href="tel:{{ contact_snippet.content.phone }}">{{ contact_snippet.content.phone }}</a></li>
+                            {% endif %}
+
+                            {% if contact_snippet.content.show_address|default(true) and contact_snippet.content.address|default('') %}
+                                <li>{{ contact_snippet.content.address|nl2br }}</li>
+                            {% endif %}
+
+                            {% set has_social_links = false %}
+                            {% if contact_snippet.content.show_linkedin|default(true) and contact_snippet.content.linkedin|default('') %}
+                                {% set has_social_links = true %}
+                            {% endif %}
+                            {% if contact_snippet.content.show_instagram|default(true) and contact_snippet.content.instagram|default('') %}
+                                {% set has_social_links = true %}
+                            {% endif %}
+                            {% if contact_snippet.content.show_facebook|default(true) and contact_snippet.content.facebook|default('') %}
+                                {% set has_social_links = true %}
+                            {% endif %}
+                            {% if contact_snippet.content.show_github|default(true) and contact_snippet.content.github|default('') %}
+                                {% set has_social_links = true %}
+                            {% endif %}
+
+                            {% if has_social_links %}
+                                <li class="footer-social-links">
+                                    {% if contact_snippet.content.show_linkedin|default(true) and contact_snippet.content.linkedin|default('') %}
+                                        <a href="{{ contact_snippet.content.linkedin }}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
+                                            <img src="/img/icons/linkedin.svg" alt="" aria-hidden="true">
+                                        </a>
+                                    {% endif %}
+
+                                    {% if contact_snippet.content.show_instagram|default(true) and contact_snippet.content.instagram|default('') %}
+                                        <a href="{{ contact_snippet.content.instagram }}" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
+                                            <img src="/img/icons/instagram.svg" alt="" aria-hidden="true">
+                                        </a>
+                                    {% endif %}
+
+                                    {% if contact_snippet.content.show_facebook|default(true) and contact_snippet.content.facebook|default('') %}
+                                        <a href="{{ contact_snippet.content.facebook }}" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">
+                                            <img src="/img/icons/facebook.svg" alt="" aria-hidden="true">
+                                        </a>
+                                    {% endif %}
+
+                                    {% if contact_snippet.content.show_github|default(true) and contact_snippet.content.github|default('') %}
+                                        <a href="{{ contact_snippet.content.github }}" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub">
+                                            <img src="/img/icons/github.svg" alt="" aria-hidden="true">
+                                        </a>
+                                    {% endif %}
+                                </li>
+                            {% endif %}
                         </ul>
                     </div>
                 </div>

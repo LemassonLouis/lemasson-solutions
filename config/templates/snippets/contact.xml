@@ -1,0 +1,166 @@
+<?xml version="1.0" ?>
+<template xmlns="http://schemas.sulu.io/template/template"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+
+    <key>contact</key>
+
+    <meta>
+        <title lang="fr">Mes coordonnées</title>
+    </meta>
+
+    <properties>
+        <property name="title" type="text_line" mandatory="true">
+            <meta>
+                <title lang="fr">Titre du fragment</title>
+            </meta>
+            <params>
+                <param name="default_value" value="Mes coordonnées"/>
+            </params>
+        </property>
+
+        <property name="email" type="text_line" colspan="8">
+            <meta>
+                <title lang="fr">Email</title>
+            </meta>
+        </property>
+
+        <property name="show_email" type="checkbox" colspan="4">
+            <meta>
+                <title lang="fr">Afficher l'email dans le footer</title>
+            </meta>
+            <params>
+                <param name="type" value="toggler"/>
+                <param name="default_value" value="true"/>
+            </params>
+        </property>
+
+        <property name="phone" type="text_line" colspan="8">
+            <meta>
+                <title lang="fr">Téléphone</title>
+            </meta>
+        </property>
+
+        <property name="show_phone" type="checkbox" colspan="4">
+            <meta>
+                <title lang="fr">Afficher le téléphone dans le footer</title>
+            </meta>
+            <params>
+                <param name="type" value="toggler"/>
+                <param name="default_value" value="true"/>
+            </params>
+        </property>
+
+        <property name="address" type="text_area" colspan="8">
+            <meta>
+                <title lang="fr">Adresse</title>
+            </meta>
+        </property>
+
+        <property name="show_address" type="checkbox" colspan="4">
+            <meta>
+                <title lang="fr">Afficher l'adresse dans le footer</title>
+            </meta>
+            <params>
+                <param name="type" value="toggler"/>
+                <param name="default_value" value="true"/>
+            </params>
+        </property>
+
+        <property name="linkedin" type="url" colspan="8">
+            <meta>
+                <title lang="fr">Lien LinkedIn</title>
+            </meta>
+            <params>
+                <param name="schemes" type="collection">
+                    <param name="http://"/>
+                    <param name="https://"/>
+                </param>
+            </params>
+        </property>
+
+        <property name="show_linkedin" type="checkbox" colspan="4">
+            <meta>
+                <title lang="fr">Afficher le lien LinkedIn dans le footer</title>
+            </meta>
+            <params>
+                <param name="type" value="toggler"/>
+                <param name="default_value" value="true"/>
+            </params>
+        </property>
+
+        <property name="instagram" type="url" colspan="8">
+            <meta>
+                <title lang="fr">Lien Instagram</title>
+            </meta>
+            <params>
+                <param name="schemes" type="collection">
+                    <param name="http://"/>
+                    <param name="https://"/>
+                </param>
+            </params>
+        </property>
+
+        <property name="show_instagram" type="checkbox" colspan="4">
+            <meta>
+                <title lang="fr">Afficher le lien Instagram dans le footer</title>
+            </meta>
+            <params>
+                <param name="type" value="toggler"/>
+                <param name="default_value" value="true"/>
+            </params>
+        </property>
+
+        <property name="facebook" type="url" colspan="8">
+            <meta>
+                <title lang="fr">Lien Facebook</title>
+            </meta>
+            <params>
+                <param name="schemes" type="collection">
+                    <param name="http://"/>
+                    <param name="https://"/>
+                </param>
+            </params>
+        </property>
+
+        <property name="show_facebook" type="checkbox" colspan="4">
+            <meta>
+                <title lang="fr">Afficher le lien Facebook dans le footer</title>
+            </meta>
+            <params>
+                <param name="type" value="toggler"/>
+                <param name="default_value" value="true"/>
+            </params>
+        </property>
+
+        <property name="github" type="url" colspan="8">
+            <meta>
+                <title lang="fr">Lien GitHub</title>
+            </meta>
+            <params>
+                <param name="schemes" type="collection">
+                    <param name="http://"/>
+                    <param name="https://"/>
+                </param>
+            </params>
+        </property>
+
+        <property name="show_github" type="checkbox" colspan="4">
+            <meta>
+                <title lang="fr">Afficher le lien GitHub dans le footer</title>
+            </meta>
+            <params>
+                <param name="type" value="toggler"/>
+                <param name="default_value" value="true"/>
+            </params>
+        </property>
+    </properties>
+
+    <areas>
+        <area key="footer_contact" cache-invalidation="true">
+            <meta>
+                <title lang="fr">Coordonnées de contact</title>
+            </meta>
+        </area>
+    </areas>
+</template>
