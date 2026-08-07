@@ -7,6 +7,7 @@
 
     {% include 'pages/fragments/_hero.html.twig' %}
     {% include 'pages/partials/_breadcrumbs.html.twig' %}
-
-    {{ content.content|raw }}
+    {% include 'pages/fragments/_content_sections.html.twig' %}
+    {% include 'pages/fragments/_faq.html.twig' %}
+    {% include 'pages/fragments/_cta-banner.html.twig' %}
 {% endblock %}

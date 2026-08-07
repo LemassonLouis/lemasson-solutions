@@ -24,12 +24,11 @@
             </meta>
 
             <properties>
-                <property name="content" type="text_editor">
-                    <meta>
-                        <title lang="fr">Contenu</title>
-                    </meta>
-                </property>
+                <xi:include href="fragments/content-sections.xml"/>
             </properties>
         </section>
+
+        <xi:include href="fragments/faq.xml"/>
+        <xi:include href="fragments/cta-banner.xml"/>
     </properties>
 </template>

@@ -1,0 +1,22 @@
+{% set faq_title = faq_title|default(content.faq_title|default('')) %}
+{% set faq_items = faq|default(content.faq_items|default([])) %}
+
+{% if faq_items is not empty %}
+    <div class="faq">
+        {% if faq_title is not empty %}
+            <h2>{{ faq_title }}</h2>
+        {% endif %}
+
+        {% for item in faq_items %}
+            <div class="faq-item">
+                {% if item.question|default('') is not empty %}
+                    <h3>{{ item.question }}</h3>
+                {% endif %}
+
+                {% if item.answer|default('') is not empty %}
+                    <p class="faq-answer">{{ item.answer|raw }}</p>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
