@@ -31,5 +31,7 @@
                 </property>
             </properties>
         </section>
+
+        <xi:include href="fragments/cta-banner.xml"/>
     </properties>
 </template>

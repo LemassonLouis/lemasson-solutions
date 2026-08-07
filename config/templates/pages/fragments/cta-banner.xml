@@ -1,0 +1,48 @@
+<?xml version="1.0" ?>
+<section name="cta-banner"
+         xmlns="http://schemas.sulu.io/template/template"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+
+    <meta>
+        <title lang="fr">Bandeau CTA</title>
+    </meta>
+
+    <properties>
+        <property name="hasCTABanner" type="checkbox">
+            <params>
+                <param name="type" value="toggler"/>
+                <param name="label">
+                    <meta>
+                        <title lang="fr">Afficher le bandeau CTA</title>
+                    </meta>
+                </param>
+            </params>
+        </property>
+
+        <property name="ctaBannerTitle" type="text_line" visibleCondition="hasCTABanner">
+            <meta>
+                <title lang="fr">Titre</title>
+            </meta>
+        </property>
+
+        <property name="ctaBannerText" type="text_area" visibleCondition="hasCTABanner">
+            <meta>
+                <title lang="fr">Texte</title>
+            </meta>
+        </property>
+
+        <property name="ctaBannerButton" type="link" visibleCondition="hasCTABanner">
+            <meta>
+                <title lang="fr">URL et libellé du boutton</title>
+            </meta>
+
+            <params>
+                <param name="enable_attributes" value="true"/>
+                <param name="types" type="collection">
+                    <param name="page"/>
+                </param>
+            </params>
+        </property>
+    </properties>
+</section>

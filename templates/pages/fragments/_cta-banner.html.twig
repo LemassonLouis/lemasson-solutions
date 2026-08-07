@@ -1,0 +1,19 @@
+{% if content.hasCTABanner %}
+    {% block style %}
+        <link rel="stylesheet" href="{{ asset('/css/cta-banner.css') }}">
+    {% endblock %}
+
+    <div class="cta-banner">
+        {% if content.ctaBannerTitle is not empty %}
+            <h2 class="cta-banner-title">{{ content.ctaBannerTitle }}</h2>
+        {% endif %}
+
+        {% if content.ctaBannerText is not empty %}
+            <p class="cta-banner-text">{{ content.ctaBannerText }}</p>
+        {% endif %}
+
+        {% if content.ctaBannerButton is not empty %}
+            <a class="cta-banner-button btn-secondary" href="{{ content.ctaBannerButton }}" target="{{ view.ctaBannerButton.target }}" title="{{ view.ctaBannerButton.title }}">{{ view.ctaBannerButton.title }}</a>
+        {% endif %}
+    </div>
+{% endif %}

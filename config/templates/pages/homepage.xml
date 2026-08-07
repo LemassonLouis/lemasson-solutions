@@ -27,5 +27,7 @@
                 <xi:include href="fragments/content-sections.xml"/>
             </properties>
         </section>
+
+        <xi:include href="fragments/cta-banner.xml"/>
     </properties>
 </template>
