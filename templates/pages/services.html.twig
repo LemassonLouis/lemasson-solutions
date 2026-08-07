@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    {% if content.heroImage|default('') is empty %}
+        <h1>{{ content.title }}</h1>
+    {% endif %}
+
+    {% include 'pages/fragments/_hero.html.twig' %}
+    {% include 'pages/partials/_breadcrumbs.html.twig' %}
+
+    {{ content.content|raw }}
+
+    <div class="service-list">
+        {% for service in sulu_services() %}
+            {% set excerpt = service.extensionsData.excerpt %}
+
+            <article class="service-item">
+                <h2>
+                    {% if excerpt.title is defined and excerpt.title %}
+                        {{ excerpt.title }}
+                    {% else %}
+                        {{ service.title }}
+                    {% endif %}
+                </h2>
+
+                {% if excerpt.description is defined and excerpt.description %}
+                    {{ excerpt.description|raw }}
+                {% endif %}
+
+                <a class="btn-primary" href="{{ service.resourceSegment }}" title="{% if excerpt.linkText is defined and excerpt.linkText %}{{ excerpt.linkText }}{% else %}Découvrir ce service{% endif %}">
+                    {% if excerpt.linkText is defined and excerpt.linkText %}
+                        {{ excerpt.linkText }}
+                    {% else %}
+                        Découvrir ce service
+                    {% endif %}
+                </a>
+            </article>
+        {% endfor %}
+    </div>
+{% endblock %}

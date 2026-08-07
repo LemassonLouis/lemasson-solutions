@@ -28,8 +28,8 @@ class ServicesExtension extends AbstractExtension
         $locale = $this->requestAnalyzer->getCurrentLocalization()->getLocale();
 
         $query = $this->documentManager->createQuery(
-            'SELECT * FROM [nt:unstructured] AS a 
-            WHERE a.[jcr:mixinTypes] = "sulu:page" 
+            'SELECT * FROM [nt:unstructured] AS a
+            WHERE a.[jcr:mixinTypes] = "sulu:page"
             AND a.[i18n:' . $locale . '-template] = "service"
             AND ISDESCENDANTNODE(a, "/cmf/' . $webspaceKey . '/contents")
             ORDER BY a.[suluOrder] ASC',
