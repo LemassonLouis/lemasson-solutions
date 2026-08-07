@@ -19,19 +19,19 @@
             </params>
         </property>
 
-        <property name="heroTitle" type="text_line">
+        <property name="heroTitle" type="text_line" disabledCondition="!heroImage || !heroImage.id">
             <meta>
                 <title lang="fr">Titre</title>
             </meta>
         </property>
 
-        <property name="heroText" type="text_area">
+        <property name="heroText" type="text_area" disabledCondition="!heroImage || !heroImage.id">
             <meta>
                 <title lang="fr">Texte</title>
             </meta>
         </property>
 
-        <property name="hasPrimaryCTA" type="checkbox" colspan="4">
+        <property name="hasPrimaryCTA" type="checkbox" colspan="4" disabledCondition="!heroImage || !heroImage.id">
             <params>
                 <param name="type" value="toggler"/>
                 <param name="label">
