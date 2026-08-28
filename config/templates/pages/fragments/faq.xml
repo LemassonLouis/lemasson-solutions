@@ -29,7 +29,7 @@
                             </meta>
                         </property>
 
-                        <property name="answer" type="text_area">
+                        <property name="answer" type="text_editor">
                             <meta>
                                 <title lang="fr">Réponse</title>
                             </meta>
