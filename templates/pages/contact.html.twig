@@ -1,0 +1,144 @@
+{% extends 'base.html.twig' %}
+
+{% block style %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('/css/contact-page.css') }}">
+{% endblock %}
+
+{% block content %}
+
+    {% if content.heroImage|default('') is empty %}
+        <h1>{{ content.title }}</h1>
+    {% endif %}
+
+    {% include 'pages/fragments/_hero.html.twig' %}
+    {% include 'pages/partials/_breadcrumbs.html.twig' %}
+
+    {% set contact_snippet = sulu_snippet_load_by_area('footer_contact')|default([]) %}
+
+    {% set has_contact_details = 
+        contact_snippet.content.show_email|default(false) and contact_snippet.content.email|default('') or
+        contact_snippet.content.show_phone|default(false) and contact_snippet.content.phone|default('') or
+        contact_snippet.content.show_address|default(false) and contact_snippet.content.address|default('') or
+        contact_snippet.content.show_linkedin|default(false) and contact_snippet.content.linkedin|default('') or
+        contact_snippet.content.show_instagram|default(false) and contact_snippet.content.instagram|default('') or
+        contact_snippet.content.show_facebook|default(false) and contact_snippet.content.facebook|default('') or
+        contact_snippet.content.show_github|default(false) and contact_snippet.content.github|default('')
+    %}
+
+    <div class="contact-page {{ has_contact_details ? 'contact-page--with-sidebar' : 'contact-page--no-sidebar' }}">
+        <div class="contact-page__stack">
+            {% if content.content|default('') %}
+                <div class="contact-page__content">
+                    {{ content.content|raw }}
+                </div>
+            {% endif %}
+
+            <div class="contact-card contact-card--form">
+                <h2>Formulaire de contact</h2>
+
+                <form class="contact-form" action="#" method="post">
+                    <div class="contact-form__row">
+                        <label for="contact-name">Nom</label>
+                        <input id="contact-name" type="text" name="name" placeholder="Votre nom" required>
+                    </div>
+
+                    <div class="contact-form__row">
+                        <label for="contact-email">Email</label>
+                        <input id="contact-email" type="email" name="email" placeholder="Votre email" required>
+                    </div>
+
+                    <div class="contact-form__row">
+                        <label for="contact-subject">Objet</label>
+                        <input id="contact-subject" type="text" name="subject" placeholder="Objet de votre message">
+                    </div>
+
+                    <div class="contact-form__row">
+                        <label for="contact-message">Message</label>
+                        <textarea id="contact-message" name="message" rows="6" placeholder="Écrivez votre message" required></textarea>
+                    </div>
+
+                    <button class="btn-primary" type="submit">Envoyer</button>
+                </form>
+            </div>
+        </div>
+
+        {% if has_contact_details %}
+            <aside class="contact-page__sidebar contact-card contact-card--info">
+                <h2>Mes informations de contact</h2>
+
+                <ul class="contact-info-list">
+                    {% if contact_snippet.content.show_email|default(true) and contact_snippet.content.email|default('') %}
+                        <li>
+                            <span class="contact-label">Email</span>
+                            <a href="mailto:{{ contact_snippet.content.email }}">{{ contact_snippet.content.email }}</a>
+                        </li>
+                    {% endif %}
+
+                    {% if contact_snippet.content.show_phone|default(true) and contact_snippet.content.phone|default('') %}
+                        <li>
+                            <span class="contact-label">Téléphone</span>
+                            <a href="tel:{{ contact_snippet.content.phone }}">{{ contact_snippet.content.phone }}</a>
+                        </li>
+                    {% endif %}
+
+                    {% if contact_snippet.content.show_address|default(true) and contact_snippet.content.address|default('') %}
+                        <li>
+                            <span class="contact-label">Adresse</span>
+                            <div>{{ contact_snippet.content.address|nl2br }}</div>
+                        </li>
+                    {% endif %}
+                </ul>
+
+                {% set has_social_links = 
+                    contact_snippet.content.show_linkedin|default(false) and contact_snippet.content.linkedin|default('') or
+                    contact_snippet.content.show_instagram|default(false) and contact_snippet.content.instagram|default('') or
+                    contact_snippet.content.show_facebook|default(false) and contact_snippet.content.facebook|default('') or
+                    contact_snippet.content.show_github|default(false) and contact_snippet.content.github|default('')
+                %}
+
+                {% if has_social_links %}
+                    <div class="contact-social-links">
+                        {% if contact_snippet.content.show_linkedin|default(true) and contact_snippet.content.linkedin|default('') %}
+                            <a href="{{ contact_snippet.content.linkedin }}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
+                                <span class="contact-social-links__icon">
+                                    <img src="{{ asset('/img/icons/linkedin.svg') }}" alt="" aria-hidden="true">
+                                </span>
+                                <span class="contact-social-links__label">LinkedIn</span>
+                            </a>
+                        {% endif %}
+
+                        {% if contact_snippet.content.show_instagram|default(true) and contact_snippet.content.instagram|default('') %}
+                            <a href="{{ contact_snippet.content.instagram }}" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
+                                <span class="contact-social-links__icon">
+                                    <img src="/img/icons/instagram.svg" alt="" aria-hidden="true">
+                                </span>
+                                <span class="contact-social-links__label">Instagram</span>
+                            </a>
+                        {% endif %}
+
+                        {% if contact_snippet.content.show_facebook|default(true) and contact_snippet.content.facebook|default('') %}
+                            <a href="{{ contact_snippet.content.facebook }}" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">
+                                <span class="contact-social-links__icon">
+                                    <img src="/img/icons/facebook.svg" alt="" aria-hidden="true">
+                                </span>
+                                <span class="contact-social-links__label">Facebook</span>
+                            </a>
+                        {% endif %}
+
+                        {% if contact_snippet.content.show_github|default(true) and contact_snippet.content.github|default('') %}
+                            <a href="{{ contact_snippet.content.github }}" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub">
+                                <span class="contact-social-links__icon">
+                                    <img src="/img/icons/github.svg" alt="" aria-hidden="true">
+                                </span>
+                                <span class="contact-social-links__label">GitHub</span>
+                            </a>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            </aside>
+        {% endif %}
+    </div>
+
+    {% include 'pages/fragments/_cta-banner.html.twig' %}
+{% endblock %}

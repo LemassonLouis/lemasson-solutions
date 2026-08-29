@@ -19,7 +19,7 @@
             </params>
         </property>
 
-        <property name="email" type="text_line" colspan="8">
+        <property name="email" type="text_line" mandatory="true" colspan="8">
             <meta>
                 <title lang="fr">Email</title>
             </meta>
@@ -27,7 +27,7 @@
 
         <property name="show_email" type="checkbox" colspan="4">
             <meta>
-                <title lang="fr">Afficher l'email dans le footer</title>
+                <title lang="fr">Afficher l'email</title>
             </meta>
             <params>
                 <param name="type" value="toggler"/>
@@ -43,7 +43,7 @@
 
         <property name="show_phone" type="checkbox" colspan="4">
             <meta>
-                <title lang="fr">Afficher le téléphone dans le footer</title>
+                <title lang="fr">Afficher le téléphone</title>
             </meta>
             <params>
                 <param name="type" value="toggler"/>
@@ -59,7 +59,7 @@
 
         <property name="show_address" type="checkbox" colspan="4">
             <meta>
-                <title lang="fr">Afficher l'adresse dans le footer</title>
+                <title lang="fr">Afficher l'adresse</title>
             </meta>
             <params>
                 <param name="type" value="toggler"/>
@@ -81,7 +81,7 @@
 
         <property name="show_linkedin" type="checkbox" colspan="4">
             <meta>
-                <title lang="fr">Afficher le lien LinkedIn dans le footer</title>
+                <title lang="fr">Afficher le lien LinkedIn</title>
             </meta>
             <params>
                 <param name="type" value="toggler"/>
@@ -103,7 +103,7 @@
 
         <property name="show_instagram" type="checkbox" colspan="4">
             <meta>
-                <title lang="fr">Afficher le lien Instagram dans le footer</title>
+                <title lang="fr">Afficher le lien Instagram</title>
             </meta>
             <params>
                 <param name="type" value="toggler"/>
@@ -125,7 +125,7 @@
 
         <property name="show_facebook" type="checkbox" colspan="4">
             <meta>
-                <title lang="fr">Afficher le lien Facebook dans le footer</title>
+                <title lang="fr">Afficher le lien Facebook</title>
             </meta>
             <params>
                 <param name="type" value="toggler"/>
@@ -147,7 +147,7 @@
 
         <property name="show_github" type="checkbox" colspan="4">
             <meta>
-                <title lang="fr">Afficher le lien GitHub dans le footer</title>
+                <title lang="fr">Afficher le lien GitHub</title>
             </meta>
             <params>
                 <param name="type" value="toggler"/>

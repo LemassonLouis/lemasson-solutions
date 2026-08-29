@@ -88,29 +88,29 @@
                         <ul class="footer-links footer-contact">
                             {% set contact_snippet = sulu_snippet_load_by_area('footer_contact')|default([]) %}
 
-                            {% if contact_snippet.content.show_email|default(true) and contact_snippet.content.email|default('') %}
+                            {% if contact_snippet.content.show_email|default(false) and contact_snippet.content.email|default('') %}
                                 <li><a href="mailto:{{ contact_snippet.content.email }}">{{ contact_snippet.content.email }}</a></li>
                             {% endif %}
 
-                            {% if contact_snippet.content.show_phone|default(true) and contact_snippet.content.phone|default('') %}
+                            {% if contact_snippet.content.show_phone|default(false) and contact_snippet.content.phone|default('') %}
                                 <li><a href="tel:{{ contact_snippet.content.phone }}">{{ contact_snippet.content.phone }}</a></li>
                             {% endif %}
 
-                            {% if contact_snippet.content.show_address|default(true) and contact_snippet.content.address|default('') %}
+                            {% if contact_snippet.content.show_address|default(false) and contact_snippet.content.address|default('') %}
                                 <li>{{ contact_snippet.content.address|nl2br }}</li>
                             {% endif %}
 
                             {% set has_social_links = false %}
-                            {% if contact_snippet.content.show_linkedin|default(true) and contact_snippet.content.linkedin|default('') %}
+                            {% if contact_snippet.content.show_linkedin|default(false) and contact_snippet.content.linkedin|default('') %}
                                 {% set has_social_links = true %}
                             {% endif %}
-                            {% if contact_snippet.content.show_instagram|default(true) and contact_snippet.content.instagram|default('') %}
+                            {% if contact_snippet.content.show_instagram|default(false) and contact_snippet.content.instagram|default('') %}
                                 {% set has_social_links = true %}
                             {% endif %}
-                            {% if contact_snippet.content.show_facebook|default(true) and contact_snippet.content.facebook|default('') %}
+                            {% if contact_snippet.content.show_facebook|default(false) and contact_snippet.content.facebook|default('') %}
                                 {% set has_social_links = true %}
                             {% endif %}
-                            {% if contact_snippet.content.show_github|default(true) and contact_snippet.content.github|default('') %}
+                            {% if contact_snippet.content.show_github|default(false) and contact_snippet.content.github|default('') %}
                                 {% set has_social_links = true %}
                             {% endif %}
 
